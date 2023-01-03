@@ -42,7 +42,10 @@ def get_keyword_news(keyword, period):
       time = parse(time_chars).replace(tzinfo=None)
 
       # news_source
-      source = item.find("a", {"class": 'wEwyrc AVN2gc WfKKme '}).contents[0]
+      try:
+        source = item.find("a", {"class": 'wEwyrc AVN2gc WfKKme '}).contents[0]
+      except:
+        source = 'NA'
       
       # fill-in dataframe
       news_dataframe.loc[len(news_dataframe)] = [keyword, time, title, link, source]
@@ -72,7 +75,7 @@ def get_keyword_news(keyword, period):
     for j in range(len(news_dataframe)-i-1):
       a = list(clean_title[i])
       b = list(clean_title[i+j+1])
-      if len(set(set(a) & set(b))) >= 9:
+      if len(set(set(a) & set(b))) >= 7:
         unique_title = min(news_dataframe.title[i], news_dataframe.title[i+j+1], key=len)  
     unique_titles.append(unique_title)
   news_dataframe = news_dataframe[news_dataframe['title'].isin(list(set(unique_titles)))]
