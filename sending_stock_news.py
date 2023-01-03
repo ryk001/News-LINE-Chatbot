@@ -118,10 +118,13 @@ token = 'i2LIuweKIDFXKIeSoWJWFF55PpIu0uYwjBWIcWsmqgF'
 keywords= ['健策 3653', '智伸科 4551', '南亞科 2408', '台翰 1336', '創意 3443', '晶心科 6533', '宜特 3289', '眾達-KY 4977', '資本支出', 'Trendforce 預估', 'IDC 預估', 'Gartner 預估']
 all_news_dataframe = pd.DataFrame()
 
-for i in keywords:
-  news_dataframe = get_keyword_news(i, '24hr')
-  all_news_dataframe = all_news_dataframe.append(news_dataframe, ignore_index=True)
+try:
+  for i in keywords:
+    news_dataframe = get_keyword_news(i, '1d')
+    all_news_dataframe = all_news_dataframe.append(news_dataframe, ignore_index=True)
 
-if all_news_dataframe.empty == False:
-  message = generate_message(all_news_dataframe)
-  lineNotifyMessage(token, message)
+  if all_news_dataframe.empty == False:
+    message = generate_message(all_news_dataframe)
+    lineNotifyMessage(token, message)
+except:
+  pass
