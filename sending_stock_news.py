@@ -14,7 +14,7 @@ def get_keyword_news(keyword, period):
   global news_dataframe
 
   # initial dataframe
-  news_dataframe = pd.DataFrame(columns=['keyword', 'time', 'title', 'link', 'news_source'])
+  news_dataframe = pd.DataFrame(columns=['keyword', 'time', 'title', 'link'])
   
   # fetch news data
   res = requests.get('https://news.google.com/search?q="'+ keyword +'"%20when%3A'+ period +'&hl=zh-TW&gl=TW&ceid=TW%3Azh-Hant')
@@ -42,18 +42,18 @@ def get_keyword_news(keyword, period):
       time = parse(time_chars).replace(tzinfo=None)
 
       # news_source
-      try:
-        print(item.find("a", {"class": 'wEwyrc AVN2gc WfKKme '}))
-        source = item.find("a", {"class": 'wEwyrc AVN2gc WfKKme '}).contents[0]
-      except:
-        source = 'NA'
+#       try:
+#         print(item.find("a", {"class": 'wEwyrc AVN2gc WfKKme '}))
+#         source = item.find("a", {"class": 'wEwyrc AVN2gc WfKKme '}).contents[0]
+#       except:
+#         source = 'NA'
       
       # fill-in dataframe
-      news_dataframe.loc[len(news_dataframe)] = [keyword, time, title, link, source]
+      news_dataframe.loc[len(news_dataframe)] = [keyword, time, title, link]
       
   
   # transform dtype
-  for col in ['keyword', 'title', 'link', 'news_source']: news_dataframe[col] = news_dataframe[col].astype('string')
+  for col in ['keyword', 'title', 'link']: news_dataframe[col] = news_dataframe[col].astype('string')
   
   
   # leave only the title with the stock name
@@ -102,7 +102,7 @@ def generate_message(all_news_dataframe):
       title = df_single_keyword.title[j]
       news_source = df_single_keyword.news_source[j][:2]
       link = df_single_keyword.link[j]
-      message += title + ' | ' + news_source + '\n' + link + '\n'
+      message += title + '\n' + link + '\n\n'
   return message
 
 def lineNotifyMessage(token, msg):
