@@ -100,7 +100,7 @@ def generate_message(all_news_dataframe):
     for j in range(len(df_single_keyword)):   
       
       title = df_single_keyword.title[j]
-      news_source = df_single_keyword.news_source[j][:2]
+#       news_source = df_single_keyword.news_source[j][:2]
       link = df_single_keyword.link[j]
       message += title + '\n' + link + '\n\n'
   return message
