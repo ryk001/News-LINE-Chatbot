@@ -1,7 +1,7 @@
+python-dateutil
 pyshorteners
 requests
 selenium
 datetime
-dateutil
 pandas
 bs4
