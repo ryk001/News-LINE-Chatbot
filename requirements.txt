@@ -1,0 +1,6 @@
+datetime
+pandas
+requests
+selenium
+pygsheets
+bs4
