@@ -64,8 +64,9 @@ def get_keyword_news(keyword, period):
   news_dataframe = news_dataframe[~news_dataframe.title.str.contains('|'.join(shit_news_keyword))].reset_index(drop=True)
 
   # clean up similar news
-  clean_title = news_dataframe.title.copy()
+  news_dataframe = news_dataframe.drop_duplicates(subset=['title']).reset_index(drop=True)
   
+  clean_title = news_dataframe.title.copy()
   trash_word = ['是', '的', '「', '」', ' ', '：', '、', '？', '.', '！', 'TechNews', '\d+', ' ', '|', '，', '／']
   for i in trash_word:
     clean_title = clean_title.str.replace(i, '', regex=True)
@@ -76,7 +77,7 @@ def get_keyword_news(keyword, period):
     for j in range(len(news_dataframe)-i-1):
       a = list(clean_title[i])
       b = list(clean_title[i+j+1])
-      if len(set(set(a) & set(b))) >= 7:
+      if len(set(set(a) & set(b))) >= 8:
         unique_title = min(news_dataframe.title[i], news_dataframe.title[i+j+1], key=len)  
     unique_titles.append(unique_title)
   news_dataframe = news_dataframe[news_dataframe['title'].isin(list(set(unique_titles)))]
