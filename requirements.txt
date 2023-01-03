@@ -1,6 +1,7 @@
-datetime
-pandas
+pyshorteners
 requests
 selenium
-pygsheets
+datetime
+dateutil
+pandas
 bs4
