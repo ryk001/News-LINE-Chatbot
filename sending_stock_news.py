@@ -43,6 +43,7 @@ def get_keyword_news(keyword, period):
 
       # news_source
       try:
+        print(item.find("a", {"class": 'wEwyrc AVN2gc WfKKme '}))
         source = item.find("a", {"class": 'wEwyrc AVN2gc WfKKme '}).contents[0]
       except:
         source = 'NA'
