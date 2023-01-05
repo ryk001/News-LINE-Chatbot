@@ -80,7 +80,7 @@ def get_keyword_news(keyword, period):
       b = list(clean_title[i+j+1])
       if len(set(set(a) & set(b))) >= 8:
         unique_title = min(news_dataframe.title[i], news_dataframe.title[i+j+1], key=len)  
-    unique_titles.concat(unique_title)
+    unique_titles.append(unique_title)
   news_dataframe = news_dataframe[news_dataframe['title'].isin(list(set(unique_titles)))]
   
   return news_dataframe
