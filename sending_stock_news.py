@@ -126,13 +126,13 @@ token = os.environ['LINE_NOTIFY_TOKEN']
 
 # keywords= ['健策 3653', '智伸科 4551', '南亞科 2408', '台翰 1336', '創意 3443', '晶心科 6533', '宜特 3289', '眾達-KY 4977', '資本支出', 'Trendforce 預估', 'IDC 預估', 'Gartner 預估']
 keywords = open('keyword_watchlist.txt', 'r').read().strip('\n').strip().split(',')
-print(keywords)
+# print(keywords)
 
 all_news_dataframe = pd.DataFrame()
 
 for i in keywords:
   news_dataframe = get_keyword_news(i, '1d')
-  all_news_dataframe = all_news_dataframe.concat(news_dataframe, ignore_index=True)
+  all_news_dataframe = all_news_dataframe.append(news_dataframe, ignore_index=True)
 
 if all_news_dataframe.empty == False:
   message = generate_message(all_news_dataframe)
