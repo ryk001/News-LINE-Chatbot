@@ -22,7 +22,7 @@ Click the Fork project in the upper right corner.
 - back to repo page, edit the `keyword_watchlist.txt` file
 - notice: no space between comma and keywords
 
-## Step3. Setup GitHub actions
+## Step 3. Setup GitHub actions
 - click `Actions` on the top, then click `Sending-News` on the right, and then click `Run workflow`
 
 ![run](https://s2.loli.net/2022/12/07/jQufzoTSVdcbsn2.png)
