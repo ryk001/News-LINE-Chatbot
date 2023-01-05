@@ -8,6 +8,8 @@ on:
 
 env:
   ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+  LINE_NOTIFY_TOKEN: ${{ secrets.LINE_NOTIFY_TOKEN }}
+
 
 jobs:
   scrape-latest:
