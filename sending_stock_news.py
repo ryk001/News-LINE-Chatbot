@@ -3,9 +3,10 @@
 from pyshorteners import Shortener
 from dateutil.parser import parse
 from bs4 import BeautifulSoup
+import datetime as dt
 import pandas as pd
 import requests
-import datetime as dt
+import os
 
 # Get news
 
