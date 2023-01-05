@@ -121,7 +121,8 @@ def lineNotifyMessage(token, msg):
 # wrap up
 
 # compose multiple stocks news df
-token = 'i2LIuweKIDFXKIeSoWJWFF55PpIu0uYwjBWIcWsmqgF'
+token = os.environ['LINE_NOTIFY_TOKEN']
+
 keywords= ['健策 3653', '智伸科 4551', '南亞科 2408', '台翰 1336', '創意 3443', '晶心科 6533', '宜特 3289', '眾達-KY 4977', '資本支出', 'Trendforce 預估', 'IDC 預估', 'Gartner 預估']
 all_news_dataframe = pd.DataFrame()
 
