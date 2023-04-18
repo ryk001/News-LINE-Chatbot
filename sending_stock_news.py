@@ -132,7 +132,7 @@ all_news_dataframe = pd.DataFrame()
 
 for i in keywords:
   news_dataframe = get_keyword_news(i, '1d')
-  all_news_dataframe = all_news_dataframe.append(news_dataframe, ignore_index=True)
+#   all_news_dataframe = all_news_dataframe.append(news_dataframe, ignore_index=True)
   all_news_dataframe = pd.concat([all_news_dataframe, news_dataframe], ignore_index=True)
 
 
